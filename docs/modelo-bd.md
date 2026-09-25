@@ -1,6 +1,6 @@
 # Modelo de Base de Datos — SecureDocs
 
-\`\`\`mermaid
+```mermaid
 erDiagram
     USUARIO }o--|| ROL : tiene
     USUARIO }o--o| DEPARTAMENTO : pertenece
@@ -55,4 +55,4 @@ erDiagram
         string resultado
         string motivo
     }
-\`\`\`
+```
