@@ -1,6 +1,6 @@
 # Diagrama de Arquitectura — SecureDocs
 
-\`\`\`mermaid
+```mermaid
 flowchart TB
     subgraph Frontend
         UI[React App]
@@ -29,11 +29,11 @@ flowchart TB
     DOC --> DB
     USR --> DB
     AUD --> DB
-\`\`\`
+```
 
 ## Flujo de autorización
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
     A[Usuario solicita operación] --> B{Token JWT válido?}
     B -->|No| Z[401 No autorizado]
@@ -45,4 +45,4 @@ flowchart TD
     D --> H[Registrar en Auditoría]
     F --> H
     G --> H
-\`\`\`
+```
