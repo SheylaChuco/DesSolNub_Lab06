@@ -1,0 +1,262 @@
+:root {
+  --ink-950: #0B0E14;
+  --ink-900: #12161F;
+  --ink-800: #1A1F2B;
+  --ink-700: #262D3D;
+  --paper: #ECEEF3;
+  --muted: #8A93A6;
+  --accent-amber: #E3A73B;
+  --teal: #3FB6A8;
+  --danger: #E1544C;
+
+  --level-1: #3FB6A8;
+  --level-2: #5B8DBF;
+  --level-3: #E3A73B;
+  --level-4: #E1793B;
+  --level-5: #E1544C;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ink-900);
+  color: var(--paper);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3 { font-family: var(--font-display); margin: 0; }
+
+/* ---------- Layout ---------- */
+.app-shell { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--ink-950);
+  border-right: 1px solid var(--ink-700);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--paper);
+  margin-bottom: 32px;
+}
+
+.sidebar-brand .mark {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--accent-amber);
+  flex-shrink: 0;
+}
+
+.sidebar-nav { display: flex; flex-direction: column; gap: 2px; }
+
+.sidebar-link {
+  padding: 9px 12px;
+  border-radius: 6px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar-link:hover { background: var(--ink-800); color: var(--paper); }
+.sidebar-link.active { background: var(--ink-800); color: var(--paper); }
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--ink-700);
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--ink-800);
+  color: var(--muted);
+  border: 1px solid var(--ink-700);
+  margin-bottom: 10px;
+}
+
+.user-name { font-size: 0.85rem; color: var(--paper); margin-bottom: 8px; }
+
+.main { flex: 1; padding: 36px 44px; min-width: 0; }
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+
+.page-title { font-size: 1.65rem; letter-spacing: -0.01em; }
+
+/* ---------- Componentes ---------- */
+.panel {
+  background: var(--ink-800);
+  border: 1px solid var(--ink-700);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--ink-700);
+  background: transparent;
+  color: var(--paper);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.btn:hover { border-color: var(--muted); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-primary { background: var(--accent-amber); border-color: var(--accent-amber); color: #1A1206; font-weight: 600; }
+.btn-primary:hover { background: #EDB65C; border-color: #EDB65C; }
+
+.btn-danger { border-color: var(--danger); color: var(--danger); }
+.btn-danger:hover { background: rgba(225, 84, 76, 0.12); border-color: var(--danger); }
+
+.btn-ghost { border-color: transparent; color: var(--muted); padding: 8px 10px; }
+.btn-ghost:hover { background: var(--ink-700); color: var(--paper); }
+
+/* ---------- Lista de documentos ---------- */
+.doc-list { display: flex; flex-direction: column; }
+
+.doc-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 6px;
+  border-bottom: 1px solid var(--ink-700);
+}
+
+.doc-row:last-child { border-bottom: none; }
+
+.level-bar { width: 4px; height: 34px; border-radius: 2px; flex-shrink: 0; }
+.level-1 { background: var(--level-1); }
+.level-2 { background: var(--level-2); }
+.level-3 { background: var(--level-3); }
+.level-4 { background: var(--level-4); }
+.level-5 { background: var(--level-5); }
+
+.doc-info { flex: 1; min-width: 0; }
+.doc-title { font-size: 0.95rem; color: var(--paper); }
+.doc-meta {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  margin-top: 3px;
+  display: flex;
+  gap: 10px;
+}
+
+.doc-actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+.status-chip {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.status-pendiente { background: rgba(227, 167, 59, 0.15); color: var(--accent-amber); }
+.status-aprobado, .status-publicado { background: rgba(63, 182, 168, 0.15); color: var(--teal); }
+
+/* ---------- Formularios ---------- */
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+.field label { color: var(--muted); font-size: 0.78rem; }
+
+.field input, .field select {
+  background: var(--ink-900);
+  border: 1px solid var(--ink-700);
+  color: var(--paper);
+  padding: 9px 10px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+}
+
+.field input:focus, .field select:focus {
+  outline: 2px solid var(--accent-amber);
+  outline-offset: 1px;
+}
+
+.field-row { display: flex; gap: 12px; }
+.field-row .field { flex: 1; }
+
+.error-text { color: var(--danger); font-size: 0.85rem; margin: 8px 0; }
+
+/* ---------- Tabla genérica (Usuarios / Auditoría) ---------- */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+  text-align: left;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--muted);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ink-700);
+}
+.data-table td {
+  padding: 12px;
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--ink-700);
+}
+.data-table tr.row-denegado { border-left: 3px solid var(--danger); }
+.data-table tr.row-permitido { border-left: 3px solid var(--teal); }
+
+/* ---------- Login ---------- */
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0) 0 0/28px 28px,
+    var(--ink-950);
+}
+
+.login-panel {
+  width: 100%;
+  max-width: 380px;
+  background: var(--ink-800);
+  border: 1px solid var(--ink-700);
+  border-radius: 10px;
+  padding: 36px 32px;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.login-brand .mark { width: 10px; height: 10px; border-radius: 2px; background: var(--accent-amber); }
+
+.login-sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 28px; }
